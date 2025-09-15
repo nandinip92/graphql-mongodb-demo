@@ -73,7 +73,13 @@ This command sets up everything you need to build a Node.js + Express + GraphQL 
 
 `mongodb` → raw driver, you control everything, less abstraction.
 
-`mongoose` → library on top of MongoDB, gives you schemas, validation, models, and easier coding.
+`mongoose` → aa Node.js library used to interact with MongoDB. Think of Mongoose as a "middleman" that helps you work with MongoDB using JavaScript objects instead of writing raw database commands. It gives you schemas, validation, models, and easier coding.
+
+### Connecting to MongoDB
+
+👉 checkout [database.js](/database.js) file for code.
+👉 checkout [ConnectingToMongoDbB markdown file](/ConnectingToMongoDbB.md) for further explaination
+
 
 **Resource Links**
 
