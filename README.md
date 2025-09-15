@@ -95,6 +95,9 @@ node app.js
 
 You should see the message "Server ready at http://localhost:4000/graphql" in your terminal. Navigate to that URL in your browser to access the GraphQL Playground, where you can interact with yourGraphQL API and test queries and mutations.
 
+**Note**
+Make sure `docker-compose up` for the MongoDB to be up and running before starting the server/app
+
 ```graphql
 mutation {
   createUser(name: "Alice", age: 30) {
@@ -111,6 +114,10 @@ query {
   }
 }
 ```
+
+**output in apollographql explorer**
+
+![Output](/docs/output.png)
 
 **Resource Links**
 
