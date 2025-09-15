@@ -26,7 +26,7 @@ npm init -y
 Next, install necessary dependencies
 
 ```script
-npm install express graphql graphql-tools apollo-server-express mongodb mongoose
+npm install express@4.18.2 graphql graphql-tools apollo-server-express mongodb mongoose
 ```
 
 This command sets up everything you need to build a Node.js + Express + GraphQL server connected to MongoDB, with both low-level (mongodb) and high-level (mongoose) database access options.
