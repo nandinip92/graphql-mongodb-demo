@@ -6,10 +6,7 @@ const mongoose = require("mongoose");
 //graphql-mongo → the database name (MongoDB will create it automatically if it doesn’t exist).
 async function connectToDatabase() {
   try {
-    await mongoose.connect("mongodb://localhost:27017/graphql-mongo", {
-      useNewUrlParser: true, 
-      useUnifiedTopology: true, 
-    });
+    await mongoose.connect("mongodb://admin:graphql-mongo-demo@localhost:27017/mydatabase?authSource=admin");
     console.log("Successfully connected to MongoDB");
   } catch (error) {
     console.error("Error connecting to MongoDB:", error);
