@@ -9,9 +9,7 @@ const { ApolloServer } = require('apollo-server-express');
 const connectToDatabase = require('./database');
 
 async function startServer() {
-  //  // Connect to the database
-  await connectToDatabase();
-
+  
   // Create an Express app
   const app = express();
 
@@ -21,8 +19,13 @@ async function startServer() {
     resolvers: /* GraphQL resolvers */,
   });
 
+  // ✅ Must start Apollo server before using middleware
+  await server.start();
   // Apply the Apollo middleware to the Express app
   server.applyMiddleware({ app });
+
+// Connect to the database
+  await connectToDatabase();
 
   // Start the Express server
   app.listen({ port: 4000 }, () => {
@@ -138,4 +141,20 @@ const resolvers = {
 
 // Export resolvers so Apollo Server can use them with the schema (typeDefs)
 module.exports = resolvers;
+```
+
+## Update `app.js`
+
+Finally, update the app.js file to include our schema and resolvers:
+
+```javascript
+const typeDefs = require("./schema");
+const resolvers = require("./resolvers");
+
+// ...
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
 ```
