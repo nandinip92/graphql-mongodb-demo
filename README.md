@@ -81,6 +81,9 @@ This command sets up everything you need to build a Node.js + Express + GraphQL 
 👉 checkout [ConnectingToMongoDbB markdown file](/ConnectingToMongoDbB.md) for further explaination
 
 
+### Creating Express application to serve GraphQL API
+👉 checkout [`app.js`](/app.js)
+
 **Resource Links**
 
 https://codedamn.com/news/databases/mongodb-graphql
