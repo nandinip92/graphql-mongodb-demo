@@ -79,8 +79,8 @@ const mongoose = require("mongoose");
 // Define a schema for the "User" collection
 // A schema is like a blueprint that describes the structure of the documents in MongoDB
 const UserSchema = new mongoose.Schema({
-  name: String, 
-  age: Number, 
+  name: String,
+  age: Number,
 });
 
 // Create a Mongoose model based on the schema
@@ -91,4 +91,51 @@ const UserModel = mongoose.model("User", UserSchema);
 // Export the model so it can be used in other files
 // Example: You can import UserModel and run queries like UserModel.find(), UserModel.create(), etc.
 module.exports = UserModel;
+```
+
+## Resolvers
+
+In our resolvers, we define two functions: `getAllUsers`, which fetches all users from the MongoDB database using the `UserModel.find()` method, and `createUser`, which creates a new user using the `UserModel` and saves it to the database.
+
+**👉Checkout `resolvers.js` in this project directory**
+
+```javascript
+// Import the UserModel we created with Mongoose
+// This model represents the "users" collection in MongoDB
+const UserModel = require("./user.model");
+
+// Define resolvers for the GraphQL schema
+// Resolvers tell GraphQL how to actually fetch or modify data
+const resolvers = {
+  // ----------------------------
+  // Query resolvers (for reading data)
+  // ----------------------------
+  Query: {
+    // Resolver for getAllUsers query
+    // This will fetch all users from MongoDB using Mongoose's .find() method
+    getAllUsers: async () => {
+      return await UserModel.find(); // returns an array of users
+    },
+  },
+
+  // ----------------------------
+  // Mutation resolvers (for writing data)
+  // ----------------------------
+  Mutation: {
+    // Resolver for createUser mutation
+    // Args: (_, { name, age })
+    // - _ → placeholder for parent object (not used here)
+    // - { name, age } → arguments passed in the mutation
+    createUser: async (_, { name, age }) => {
+      // Create a new user instance with the provided name and age
+      const newUser = new UserModel({ name, age });
+
+      // Save the new user to MongoDB and return the saved document
+      return await newUser.save();
+    },
+  },
+};
+
+// Export resolvers so Apollo Server can use them with the schema (typeDefs)
+module.exports = resolvers;
 ```
