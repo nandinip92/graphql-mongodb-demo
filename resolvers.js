@@ -1,6 +1,6 @@
 // Import the UserModel we created with Mongoose
 // This model represents the "users" collection in MongoDB
-const UserModel = require("./user.model");
+const UserModel = require('./user.model');
 
 // Define resolvers for the GraphQL schema
 const resolvers = {
