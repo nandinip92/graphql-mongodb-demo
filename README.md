@@ -77,12 +77,40 @@ This command sets up everything you need to build a Node.js + Express + GraphQL 
 
 ### Connecting to MongoDB
 
-👉 checkout [database.js](/database.js) file for code.
-👉 checkout [ConnectingToMongoDbB markdown file](/ConnectingToMongoDbB.md) for further explaination
+**👉 checkout [database.js](/database.js) file for code.**
 
+**👉 checkout [ConnectingToMongoDbB markdown file](/docs/ConnectingToMongoDbB.md) for further explaination**
 
 ### Creating Express application to serve GraphQL API
-👉 checkout [`app.js`](/app.js)
+
+**👉 checkout [`app.js`](/app.js)**
+
+**👉 checkout [ExpressApplication](/docs/ExpressApplication.md) for further explaination)**
+
+### Run the server
+
+```script
+node app.js
+```
+
+You should see the message "Server ready at http://localhost:4000/graphql" in your terminal. Navigate to that URL in your browser to access the GraphQL Playground, where you can interact with yourGraphQL API and test queries and mutations.
+
+```graphql
+mutation {
+  createUser(name: "Alice", age: 30) {
+    id
+    name
+    age
+  }
+}
+query {
+  getAllUsers {
+    id
+    name
+    age
+  }
+}
+```
 
 **Resource Links**
 
